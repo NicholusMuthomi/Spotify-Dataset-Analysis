@@ -48,7 +48,7 @@ The dataset was sourced from Kaggle: [Spotify Dataset on Kaggle](https://www.kag
 - Identified streaming outliers (exceptional successes and underperformers)
 - Created artist performance dashboards
 
-## Key Findings
+## Findings
 
 1. **Platform Preferences**: Spotify dominates as the preferred platform (76% of tracks) but YouTube videos average 5x more views per track.
 
@@ -113,4 +113,5 @@ Contributions are welcome, If you have suggestions for improvements or find any 
 
 
 For inquiries or feedback, please reach out to muthominicholus22@gmail.com.
+
 
