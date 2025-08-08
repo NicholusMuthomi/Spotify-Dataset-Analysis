@@ -1,4 +1,4 @@
-# Spotify Dataset Analysis: Understanding What Makes Songs Popular
+# Spotify Dataset Analysis
 
 ## Project Overview
 
@@ -114,5 +114,6 @@ Contributions are welcome, If you have suggestions for improvements or find any 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
+
 
 For inquiries or feedback, please reach out to [muthominicholus22@gmail.com].
