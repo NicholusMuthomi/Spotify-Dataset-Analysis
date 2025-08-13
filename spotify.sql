@@ -6,7 +6,7 @@
 /*
 Music streaming platforms like Spotify and YouTube have transformed how we discover and consume music. 
 For artists, producers and music executives understanding what makes certain tracks perform better than others is crucial for success in today's digital landscape. This SQL analysis project aims to:
-1. Identify the characteristics of highly successful songs by analysing audio features (danceability, energy, valence, etc.) platform performance (Spotify streams vs. YouTube views)
+1. Identify the characteristics of highly successful songs by analysing audio features (danceability, energy, valence) platform performance (Spotify streams vs. YouTube views)
    and content type (licensed vs. unlicensed, official videos).
 2. Compare platform performance to understand why some songs perform better on Spotify while others dominate on YouTube helping artists optimise their release strategies.
 3. Provide actionable insights about music production by revealing which audio features correlate with popularity, helping creators make data-driven decisions about their music.
@@ -749,9 +749,9 @@ The music industry is no longer just about talent it’s about understanding lis
 - Focus on high-energy, danceable tracks for broader appeal
 - Invest in licensed, official content for maximum reach
 - Analyse trends to stay ahead in a competitive market
-Music will always be an art, by blending creativity with analytics, artists can craft songs that not only just sound good but also they perform exceptionally.
-The future of hits? It’s not just what sounds good—it’s what the data says works. 🎵
+Music will always be an art that will always resonate with us either in love, joy or sorrow times
 */
 -- =====================================
 -- END OF ANALYSIS
+
 -- =====================================
