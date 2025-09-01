@@ -441,7 +441,7 @@ Limit 15;
 Observation
 -- Megan Thee Stallion & Coi Leray dominate with 95%+ danceability scores. Kids' songs (Super Simple Songs) show surprisingly high danceability (94%) and positivity (92% valence).
 */
--- QUESTION 7: Find the top 5 tracks with the highest energy values
+-- QUESTION 7: The top 5 tracks with the highest energy values
 -- Most energetic tracks in the dataset
 SELECT 
     'HIGHEST ENERGY TRACKS' AS query_type,
@@ -458,7 +458,7 @@ Observation
 -- Rain Frruits sounds dominate 'highest energy' tracks with (1.0 score each) but are actually quiet (-25dB) and undanceable. 
    Streaming numbers (15M+ each) reveal strong demand for sleep/study content
 */
--- QUESTION 8: List all tracks along with their views and likes where official_video = TRUE
+-- QUESTION 8: All tracks along with their views and likes where official_video = TRUE
 -- All official music videos and their performance
 SELECT 
     'OFFICIAL MUSIC VIDEOS' AS query_type,
@@ -478,7 +478,7 @@ Obserrvations
 -- Despacito (8B+ views) dominates, but CoComelon’s kids' videos (Wheels on the Bus: 4.9B views) outperform most pop stars."
    On other hands YouTube vs. Spotify Gap: See You Again (5.8B YouTube) vs. (1.5B Spotify) and Shape of You (5.9B YouTube) vs. (3.4B Spotify)
 */
--- QUESTION 9: For each album, calculate the total views of all associated tracks
+-- QUESTION 9: For each album, the total views of all associated tracks
 -- Album-level YouTube performance
 SELECT 
     'ALBUM YOUTUBE PERFORMANCE' AS query_type,
@@ -503,7 +503,7 @@ Observations
     - Most top albums have <= 4 tracks suggesting focused releases outperform large collections.
 */
 
--- QUESTION 10: Retrieve tracks streamed more on Spotify than viewed on YouTube
+-- QUESTION 10: Retrieved tracks streamed more on Spotify than viewed on YouTube
 -- Tracks that perform better on Spotify than YouTube
 SELECT 
     'SPOTIFY > YOUTUBE PERFORMANCE' AS query_type,
@@ -522,7 +522,7 @@ Observations
    Some tracks like Love Yourself by (Bieber) are 100% Spotify focused while remixes (Roses) thrive there too. YouTube wins for visuals, Spotify for playlists.
 */
 
--- QUESTION 11: Find the top 3 most-viewed tracks for each artist using window functions
+-- QUESTION 11: The top 3 most-viewed tracks for each artist
 -- Top performing tracks per artist
 WITH artist_track_rankings AS (
     SELECT 
@@ -547,7 +547,7 @@ ORDER BY artist, view_rank;
 Observation
 -- Hip-hop thrives on Spotify, K-Pop excels on both, and remixes maintain YouTube consistency but vary on streams.
 */
--- QUESTION 12: Find tracks where the liveness score is above average
+-- QUESTION 12: Tracks where the liveness score is above average
 -- Tracks with above-average live performance feel
 WITH liveness_benchmark AS (
     SELECT AVG(liveness) AS avg_liveness_score
@@ -569,7 +569,7 @@ ORDER BY s.liveness DESC;
 Observation
 -- Live tracks especially Latin performances dominate with near perfect liveness scores (Manu Chao: 1.0). Most combine high energy (avg 0.77) except emotional ballads (Franco De Vita: 0.51 energy).
 */
--- QUESTION 13: Calculate the difference between highest and lowest energy values for each album
+-- QUESTION 13: The difference between highest and lowest energy values for each album
 -- Energy range analysis within albums
 WITH album_energy_analysis AS (
     SELECT 
@@ -739,7 +739,6 @@ FROM spotify;
 - 20,592 tracks from 2,074 unique artists, averaging 3.74 minutes per track and of course albums dominate as the most common release format
 */
 
-
 -- =============
 --  CONCLUSION
 -- ==============
@@ -753,5 +752,4 @@ Music will always be an art that will always resonate with us either in love, jo
 */
 -- =====================================
 -- END OF ANALYSIS
-
 -- =====================================
