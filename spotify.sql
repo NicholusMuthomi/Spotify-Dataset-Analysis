@@ -151,7 +151,7 @@ WHERE duration_min <= 0;
 -- =====================================
 
 -- 2.1 DATASET OVERVIEW
--- Provides high-level statistics about our dataset
+-- Provides statistics about our dataset
 SELECT 
     'DATASET OVERVIEW' AS analysis_section,
     COUNT(*) AS total_tracks,
@@ -762,3 +762,4 @@ Music will always be a piece of art that is blend with alot of creativity. Artis
 -- =====================================
 -- END OF ANALYSIS
 -- =====================================
+
