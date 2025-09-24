@@ -2,116 +2,107 @@
 
 ## Project Overview
 
-This SQL analysis project examines a dataset of 20,592 tracks by 2,074 artists to understand the characteristics that contribute to a song's popularity on streaming platforms like Spotify and YouTube. The analysis focuses on audio features, platform performance, content type and artist strategies to provide actionable insights for music creators and industry professionals.
+The project analyses the Spotify dataset sourced from Kaggle which contains over 20,000 tracks by more than 2,000 artists. The dataset includes both descriptive details like track name, artist, album and genre, as well as numerical features such as tempo, loudness, danceability, energy and popularity.
 
-## Dataset Source
+The main goal of this project is to understand what makes songs popular by studying audio features, streaming performance and platform differences between Spotify and YouTube.
 
-The dataset was sourced from Kaggle: [Spotify Dataset on Kaggle](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
+## Business Objective
 
-## Questions Addressed
+* Identify patterns in audio features that influence song popularity.
+* Compare performance across platforms (Spotify vs YouTube).
+* Assess the impact of licensing and official music videos on engagement.
+* Explore artist, album and track-level performance.
+* Provide insights that can help artists and producers optimise their music strategy.
 
-1. What audio features (danceability, energy, valence) correlate with popularity?
-2. How do songs perform differently on Spotify vs YouTube?
-3. Does licensed content or official videos impact performance?
-4. What separates top-performing artists from others?
-5. Should artists focus on singles or albums for better reach?
+## Dataset
 
-## Analysis Structure
+* Source: [Kaggle Spotify Dataset](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
+* Records: 20,592 tracks
+* Artists: 2,074
+* Features include:
 
-### 1. Data Quality Checks
-- Verified data completeness (no null values)
-- Identified and removed invalid records (tracks with duration <=0 minutes)
-- Checked for duplicate records
+  * Artist, Track, Album, Album Type
+  * Danceability, Energy, Loudness, Valence, Tempo, Duration
+  * YouTube stats (Views, Likes, Comments)
+  * Spotify streams
+  * Content type (Licensed, Official Video)
 
-### 2. Dataset Exploration
-- Basic statistics about tracks, artists and albums
-- Album type distribution (72% albums, 24% singles, 4% compilations)
-- Platform popularity (76% of tracks most popular on Spotify)
+## Environment and Tools
 
-### 3. Feature Correlation Analysis
-- Examined relationships between audio features and popularity
-- Identified loudness as having the strongest positive correlation with YouTube views (0.12)
-- Found danceability weakly boosts popularity on both platforms
+* **Database**: PostgreSQL
+* **Interface**: pgAdmin4
+* **SQL Script**: `spotify.sql`
 
-### 4. Content Type Analysis
-- Licensed tracks significantly outperform non-licensed content (4.2x more YouTube views, 1.6x more Spotify streams)
-- Official videos generate 5x more engagement than non-official videos
+## Setup and Usage
 
-### 5. Specific Questions
-- Identified billion+ stream tracks (e.g., "Blinding Lights", "Shape of You")
-- Analyzed artist productivity and performance
-- Examined album-level energy characteristics
-- Compared Spotify vs YouTube performance
+1. Install PostgreSQL and pgAdmin4.
+2. Open pgAdmin4 and create a new database ( `spotify_db`).
+3. Import the dataset into a table, or let the provided SQL script create the schema.
+4. Open `spotify.sql` in pgAdmin4.
+5. Execute the script section by section to:
 
-### 6. Music Characterization & Artist Performance
-- Classified tracks into music styles based on audio features
-- Identified streaming outliers (exceptional successes and underperformers)
-- Created artist performance dashboards
+   * Create the table.
+   * Import the dataset
+   * Run data quality checks.
+   * Perform exploratory and performance analysis.
+   * Generate insights about tracks, albums and artists.
+
+## Analysis Steps
+
+1. **Data Quality Checks**
+
+   * Checked for missing values, duplicates and invalid records.
+   * Removed tracks with invalid durations.
+
+2. **Dataset Exploration**
+
+   * High-level statistics on tracks, artists, albums.
+   * Album type distribution and platform popularity.
+
+3. **Content Analysis**
+
+   * Licensed vs Non-licensed performance.
+   * Official vs Non-official video engagement.
+
+4. **Audio Features Correlation**
+
+   * Studied how danceability, energy, valence and loudness correlate with popularity.
+   * Checked inter-feature correlations like energy vs loudness and acousticness vs energy.
+
+5. **Music Characterization**
+
+   * Classified tracks into categories such as High Energy Dance, Acoustic, Sad/Melancholic, etc.
+
+6. **Track and Album Performance**
+
+   * Top billion-stream tracks.
+   * Spotify vs YouTube dominance.
+   * Album-level engagement, energy ranges and danceability trends.
+
+7. **Artist Analysis**
+
+   * Top-performing artists by total streams and views.
+   * Artist performance summaries with average streams, energy and danceability.
+
+8. **Streaming Success and Engagement**
+
+   * Outlier analysis for exceptional tracks.
+   * Engagement differences across licensed content and official music videos.
+   * High-energy tracks and their audience appeal.
 
 ## Findings
 
-1. **Platform Preferences**: Spotify dominates as the preferred platform (76% of tracks) but YouTube videos average 5x more views per track.
-
-2. **Audio Features**: Tracks average upbeat, danceable qualities (valence: 0.53, danceability: 0.62, energy: 0.64) with most under 4 minutes long.
-
-3. **Content Type Impact**: Licensed tracks get 4.2x more YouTube views and 1.6x more Spotify streams than non-licensed content.
-
-4. **Top Performers**: 
-   - "Blinding Lights" by The Weeknd leads with 3.39B Spotify streams
-   - "Despacito" by Luis Fonsi dominates YouTube with 8B+ views
-   - Post Malone leads artists with 1.53B average streams per track
-
-5. **Release Strategy**: Albums dominate the dataset (72% of tracks) but focused releases with <=4 tracks often outperform large collections.
-
-## Business Implications
-
-1. Artists should prioritize licensed, official content for maximum reach.
-2. High-energy, danceable tracks tend to have broader appeal across platforms.
-3. YouTube offers greater viral potential while Spotify provides more consistent streaming.
-4. Collaboration tracks and soundtrack placements often drive record-breaking performance.
-5. Quality (hit potential) generally beats quantity (number of tracks released).
-
-## Technical Implementation
-
-The analysis was conducted using SQL with:
-- Data quality checks and cleaning
-- Statistical analysis and correlation calculations
-- Window functions for ranking and comparison
-- Conditional logic for music style classification
-- Performance metrics
-  
-##### Query
-```sql
--- Statistics about our dataset
-SELECT 
-    'DATASET OVERVIEW' AS analysis_section,
-    COUNT(*) AS total_tracks,
-    COUNT(DISTINCT artist) AS unique_artists,
-    COUNT(DISTINCT album) AS unique_albums,
-    COUNT(DISTINCT track) AS unique_tracks,
-    COUNT(DISTINCT channel) AS unique_channels,
-    ROUND(MIN(duration_min)::numeric, 2) AS shortest_track_minutes,
-    ROUND(MAX(duration_min)::numeric, 2) AS longest_track_minutes,
-    ROUND(AVG(duration_min)::numeric, 2) AS avg_track_duration_minutes,
-    ROUND(MIN(stream)::numeric, 0) AS min_streams,
-    ROUND(MAX(stream)::numeric, 0) AS max_streams,
-    ROUND(AVG(stream)::numeric, 0) AS avg_streams
-FROM spotify;
-```
-
----
+* **Spotify dominates distribution** but YouTube often drives higher views per track.
+* **Licensed and official content** outperform across all metrics.
+* **High-energy, danceable tracks** generally attract larger audiences.
+* **Sad/Melancholic songs** show strong Spotify performance.
+* **Post Malone, Ed Sheeran and Dua Lipa** emerge as standout artists in streams and views.
+* **Top hits dominate streams**, with billions of plays concentrated among a few tracks.
 
 ## Conclusion
 
-This analysis demonstrates how data-driven insights can complement artistic creativity in the modern music industry. By understanding what resonates with listeners across platforms, artists and producers can make informed decisions about music production, release strategies and platform optimization.
+Streaming success depends not only on the music itself but also on strategic choices like platform focus, licensing and video content. Artists and producers who analyse these trends can optimise releases, focus on high-engagement content and adapt to evolving listener preferences.
 
-## Contributing
+## Files
 
-Contributions are welcome, If you have suggestions for improvements or find any issues, please open an issue or submit a pull request.
-
-## Contact
-
-
-For inquiries or feedback, please reach out to muthominicholus22@gmail.com.
-
-
+* `spotify.sql` – SQL queries for analysis.
