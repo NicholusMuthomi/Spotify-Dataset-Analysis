@@ -93,7 +93,7 @@ There are no missing values in the datasets and all records show they contain ea
 */
 
 -- 1.2 CHECK FOR DUPLICATE RECORDS
--- Identifies if the same track appears multiple times
+-- Identify if the same track appears multiple times
 SELECT 
     'DUPLICATE ANALYSIS' AS check_type,
     artist, 
@@ -111,7 +111,7 @@ There are no duplicate values
 */
 
 -- 1.3 CHECK FOR DATA QUALITY ISSUES
--- Identifies invalid or suspicious data values
+-- Identify invalid or suspicious data values
 SELECT 
     'DATA QUALITY ISSUES' AS analysis_section,
     issue_type,
@@ -151,7 +151,7 @@ WHERE duration_min <= 0;
 -- =====================================
 
 -- 2.1 DATASET OVERVIEW
--- Provides statistics about our dataset
+-- Provide statistics about our dataset
 SELECT 
     'DATASET OVERVIEW' AS analysis_section,
     COUNT(*) AS total_tracks,
@@ -173,7 +173,7 @@ The dataset shows 20,592 tracks by 2074 artists and 11,853 albums with streams r
 */
 
 -- 2.2 ALBUM TYPE DISTRIBUTION
--- Shows what types of releases are in our dataset
+-- Show what types of releases are in our dataset
 SELECT 
     'ALBUM TYPE DISTRIBUTION' AS analysis_section,
     album_type,
@@ -189,7 +189,7 @@ Albums dominate the dataset (72% of tracks), followed by singles (24%) and compi
 */
 
 -- 2.3 PLATFORM POPULARITY DISTRIBUTION
--- Shows which platforms tracks are most popular on
+-- Show which platforms tracks are most popular on
 SELECT 
     'PLATFORM POPULARITY' AS analysis_section,
     most_played_on AS platform,
@@ -250,7 +250,7 @@ High instrumentalness variance (0-1) suggests a mix of vocal-heavy and purely in
 -- =====================================
 
 -- 3.1 LICENSED VS NON-LICENSED CONTENT PERFORMANCE
--- Compares performance between licensed and non-licensed content
+-- Compare performance between licensed and non-licensed content
 SELECT 
     'LICENSED CONTENT ANALYSIS' AS analysis_section,
     CASE WHEN licensed = TRUE THEN 'Licensed Content' ELSE 'Non-Licensed Content' END AS content_type,
@@ -274,7 +274,7 @@ On average licensed tracks get:
 */
 
 -- 3.2 OFFICIAL VIDEO VS NON-OFFICIAL VIDEO PERFORMANCE
--- Compares performance between official and non-official videos
+-- Compare performance between official and non-official videos
 SELECT 
     'OFFICIAL VIDEO ANALYSIS' AS analysis_section,
     CASE WHEN official_video = TRUE THEN 'Official Videos' ELSE 'Non-Official Videos' END AS video_type,
@@ -297,7 +297,7 @@ Official videos get 5x more engagement.
 -- =====================================
 
 -- 4.1 AUDIO FEATURES VS POPULARITY CORRELATIONS
--- Shows how audio characteristics relate to track popularity
+-- Show how audio characteristics relate to track popularity
 SELECT 
     'AUDIO FEATURES vs POPULARITY' AS analysis_section,
     correlation_type,
@@ -332,7 +332,7 @@ Danceability also weakly boosts popularity on both platforms, while acoustic tra
 */
 
 -- 4.2 INTER-FEATURE CORRELATIONS
--- Shows how audio features relate to each other
+-- Show how audio features relate to each other
 SELECT 
     'AUDIO FEATURES RELATIONSHIPS' AS analysis_section,
     feature_relationship,
@@ -363,7 +363,7 @@ Acousticness negatively correlates with loudness (-0.58) and energy (-0.69), con
 -- =====================================
 
 -- 5.1 GENRE CLASSIFICATION BASED ON AUDIO FEATURES
--- Creates music categories based on audio characteristics
+-- Create music categories based on audio characteristics
 SELECT 
     'MUSIC STYLE CLASSIFICATION' AS analysis_section,
     music_style,
@@ -404,7 +404,7 @@ Acoustic/Instrumental styles have niche appeal, with lower overall numbers.
 -- =====================================
 
 -- 6.1 TOP BILLION-STREAM TRACKS
--- Identifies the most successful tracks on Spotify
+-- Identify the most successful tracks on Spotify
 SELECT 
     'BILLION+ STREAM TRACKS' AS query_type,
     artist,
@@ -539,7 +539,7 @@ SELECT
     avg_energy,
     energy_std_dev
 FROM album_energy_analysis
-WHERE track_count > 1  -- Only albums with multiple tracks
+WHERE track_count > 1
 ORDER BY energy_range DESC
 LIMIT 15;
 
@@ -631,7 +631,7 @@ Dua Lipa has the highest danceability (0.75), while Billie Eilish succeeds with 
 -- =====================================
 
 -- 9.1 STREAMING SUCCESS OUTLIER ANALYSIS
--- Identifies tracks that perform exceptionally well or poorly
+-- Identify tracks that perform exceptionally well or poorly
 WITH streaming_statistics AS (
     SELECT 
         AVG(stream) AS avg_streams,
@@ -762,4 +762,3 @@ Music will always be a piece of art that is blend with alot of creativity. Artis
 -- =====================================
 -- END OF ANALYSIS
 -- =====================================
-
