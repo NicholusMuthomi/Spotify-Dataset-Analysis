@@ -1,6 +1,4 @@
--- ========================================
 -- SPOTIFY DATASET ANALYSIS
--- ========================================
 
 -- BUSINESS OBJECTIVE
 /*
@@ -18,7 +16,6 @@ genres attract more listeners. We will also considers how patterns in music data
 
 The goal is to understand music consumption on a larger scale. We can better appreciate the characteristics that shape successful songs and learn how music continues to adapt to listeners’ tastes 
 in the age of streaming.
-
 */
 -- DATA COLLECTION
 -- The dataset was sourced from Kaggle that has 20,592 tracks by 2,074 artists: Link(https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
@@ -52,9 +49,7 @@ CREATE TABLE spotify (
     most_played_on VARCHAR(50)        -- Platform where it's most popular
 );
 
--- =====================================
--- STEP 1: DATA QUALITY CHECKS
--- =====================================
+-- 1: DATA QUALITY CHECKS
 
 -- 1.1 CHECK FOR NULL VALUES
 -- Let understand our data completeness across all columns
@@ -146,9 +141,7 @@ The outputs raise 2 problematic records i.e Duration <=0, Logically if a music t
 DELETE FROM spotify 
 WHERE duration_min <= 0;
 
--- =====================================
--- STEP 2: DATASET EXPLORATION
--- =====================================
+-- 2: DATASET EXPLORATION
 
 -- 2.1 DATASET OVERVIEW
 -- Provide statistics about our dataset
@@ -245,9 +238,7 @@ Tracks average upbeat, danceable qualities (valence: 0.53, danceability: 0.62, e
 High instrumentalness variance (0-1) suggests a mix of vocal-heavy and purely instrumental tracks.
 */
 
--- =====================================
--- STEP 3: CONTENT TYPE ANALYSIS
--- =====================================
+-- 3: CONTENT TYPE ANALYSIS
 
 -- 3.1 LICENSED VS NON-LICENSED CONTENT PERFORMANCE
 -- Compare performance between licensed and non-licensed content
@@ -292,9 +283,7 @@ Observations
 Official videos get 5x more engagement.
 */
 
--- =====================================
--- STEP 4: AUDIO FEATURES CORRELATION ANALYSIS
--- =====================================
+-- 4: AUDIO FEATURES CORRELATION ANALYSIS
 
 -- 4.1 AUDIO FEATURES VS POPULARITY CORRELATIONS
 -- Show how audio characteristics relate to track popularity
@@ -358,9 +347,7 @@ Energy and loudness are strongly correlated (0.75), meaning louder tracks tend t
 Acousticness negatively correlates with loudness (-0.58) and energy (-0.69), confirming acoustic tracks are quieter and calmer.
 */
 
--- =====================================
--- STEP 5: MUSIC CHARACTERISATION ANALYSIS
--- =====================================
+-- 5: MUSIC CHARACTERISATION ANALYSIS
 
 -- 5.1 GENRE CLASSIFICATION BASED ON AUDIO FEATURES
 -- Create music categories based on audio characteristics
@@ -399,9 +386,7 @@ Sad/Melancholic songs perform surprisingly well on Spotify (avg 156M streams).
 Acoustic/Instrumental styles have niche appeal, with lower overall numbers.
 */
 
--- =====================================
--- STEP 6: TRACK PERFORMANCE ANALYSIS
--- =====================================
+-- 6: TRACK PERFORMANCE ANALYSIS
 
 -- 6.1 TOP BILLION-STREAM TRACKS
 -- Identify the most successful tracks on Spotify
@@ -468,9 +453,7 @@ Observation
 Live tracks especially Latin performances dominate with near perfect liveness scores (Manu Chao: 1.0). Most combine high energy (avg 0.77) except emotional ballads (Franco De Vita: 0.51 energy).
 */
 
--- =====================================
 -- STEP 7: ALBUM ANALYSIS
--- =====================================
 
 -- 7.1 ARTIST-ALBUM CATALOG
 -- Complete catalog of all albums in our dataset
@@ -576,9 +559,7 @@ Efficiency Wins:
     - Most top albums have <= 4 tracks suggesting focused releases outperform large collections.
 */
 
--- =====================================
--- STEP 8: ARTIST PERFORMANCE ANALYSIS
--- =====================================
+-- 8: ARTIST PERFORMANCE ANALYSIS
 
 -- 8.1 ARTIST TRACK COUNT AND PERFORMANCE
 -- Artist productivity ranking
@@ -615,7 +596,7 @@ SELECT
     COUNT(CASE WHEN licensed = TRUE THEN 1 END) AS licensed_tracks
 FROM spotify 
 GROUP BY artist 
-HAVING COUNT(*) >= 2  -- Artists with at least 2 tracks
+HAVING COUNT(*) >= 2
 ORDER BY total_artist_streams DESC 
 LIMIT 20;
 
@@ -626,9 +607,7 @@ Ed Sheeran dominates YouTube (1.55B avg views), while XXXTENTACION excels on Spo
 Dua Lipa has the highest danceability (0.75), while Billie Eilish succeeds with low-energy, moody tracks.
 */
 
--- =====================================
--- STEP 9: STREAMING SUCCESS ANALYSIS
--- =====================================
+-- 9: STREAMING SUCCESS ANALYSIS
 
 -- 9.1 STREAMING SUCCESS OUTLIER ANALYSIS
 -- Identify tracks that perform exceptionally well or poorly
@@ -683,9 +662,8 @@ Hits like See You Again (5.7B YouTube views) and Closer (2.4B Spotify streams) s
 YouTube loves viral moments and Spotify favors replay value.
 */
 
--- =====================================
--- STEP 10: CONTENT ENGAGEMENT ANALYSIS
--- =====================================
+-- 10: CONTENT ENGAGEMENT ANALYSIS
+
 
 -- 10.1 LICENSED CONTENT ENGAGEMENT
 -- Total engagement for licensed content
@@ -747,9 +725,8 @@ Rain Fruits sounds dominate 'highest energy' tracks with (1.0 score each) but ar
 Streaming numbers (15M+ each) reveal strong demand for sleep/study content
 */
 
--- =============
---  CONCLUSION
--- ==============
+--  SUMMARY
+
 /*
 The music industry is no longer just about talent it's about understanding listener behavior. Artists and producers can use these insights to:
 - Optimise releases (Spotify for streams, YouTube for virality)
@@ -759,6 +736,4 @@ The music industry is no longer just about talent it's about understanding liste
 Music will always be a piece of art that is blend with alot of creativity. Artists can craft songs that not only just sound good but also they perform exceptionally.
 */
 
--- =====================================
 -- END OF ANALYSIS
--- =====================================
