@@ -2,7 +2,7 @@
 
 -- BUSINESS OBJECTIVE
 /*
-Music plays an important role in our lives, whether you are a kid, a teenager or an adult. People turn to it in moments of joy, sadness, focus and celebration. With the growth of streaming platform 
+Music plays an important role in our lives, whether you are a kid, a teenager or an adult. We turn to it in moments of joy, sadness, focus and celebration. With the growth of streaming platform 
 like Spotify and Youtube, listening habits have shifted from owning physical albums to having instant access to millions of tracks across different moods and genres. Spotify is one of the 
 leading platforms driving this change, giving listeners personalised playlists, recommendations and endless choice.
 
@@ -178,7 +178,7 @@ ORDER BY track_count DESC;
 
 /*
 Observations
-Albums dominate the dataset (72% of tracks), followed by singles (24%) and compilations (4%). This suggests artists focus more on full albums than standalone singles in this collection.
+Albums make up 72% of tracks, singles 24%, compilations 4%. Artists are releasing full albums more than standalone singles.
 */
 
 -- 2.3 PLATFORM POPULARITY DISTRIBUTION
@@ -196,12 +196,11 @@ ORDER BY track_count DESC;
 
 /*
 Observations
-Spotify dominates as the preferred platform with (76% of tracks) but YouTube videos average 5x more views per track (240M vs Spotify's 139M streams).
-This suggests artists may prioritise Spotify for distribution while YouTube drives viral reach.
+Spotify is the preferred platform (76% of tracks), but YouTube videos average 5x more views per track (240M vs 139M Spotify streams). Artists may lean on Spotify for distribution while YouTube does the heavy lifting for reach.
 */
 
 -- 2.4 AUDIO FEATURES ANALYSIS
--- Statistical summary of all audio characteristics
+-- Statistical summary accross all audio characteristics
 SELECT 
     'AUDIO FEATURES STATISTICS' AS analysis_section,
     feature_name,
@@ -234,8 +233,8 @@ ORDER BY feature_name;
 
 /*
 Observations
-Tracks average upbeat, danceable qualities (valence: 0.53, danceability: 0.62, energy: 0.64) with most under 4 minutes long (avg: 3.74). 
-High instrumentalness variance (0-1) suggests a mix of vocal-heavy and purely instrumental tracks.
+Tracks average upbeat, danceable qualities (valence 0.53, danceability 0.62, energy 0.64), most under 4 minutes (avg 3.74). Instrumentalness varies across the full 0-1 range, so the dataset has a real mix of vocal-heavy and purely
+instrumental tracks.
 */
 
 -- 3: CONTENT TYPE ANALYSIS
@@ -256,8 +255,7 @@ ORDER BY track_count DESC;
 
 /*
 Observations
-Licensed tracks dominate the dataset (14,059 vs 6,533) and significantly outperform non-licensed content across all metrics. 
-On average licensed tracks get:
+Licensed tracks dominate the dataset (14,059 vs 6,533) and beat non-licensed content on every metric: 
     4.2x more YouTube views   (121M vs 29M)
     3.6x more YouTube likes   (841K vs 231K)
     4.1x more comments        (35K vs 8.8K)
@@ -265,7 +263,7 @@ On average licensed tracks get:
 */
 
 -- 3.2 OFFICIAL VIDEO VS NON-OFFICIAL VIDEO PERFORMANCE
--- Compare performance between official and non-official videos
+-- Does official status affect engagement
 SELECT 
     'OFFICIAL VIDEO ANALYSIS' AS analysis_section,
     CASE WHEN official_video = TRUE THEN 'Official Videos' ELSE 'Non-Official Videos' END AS video_type,
@@ -280,13 +278,13 @@ ORDER BY track_count DESC;
 
 /*
 Observations
-Official videos get 5x more engagement.
+Official videos get 5x more engagement than non-official ones.
 */
 
 -- 4: AUDIO FEATURES CORRELATION ANALYSIS
 
 -- 4.1 AUDIO FEATURES VS POPULARITY CORRELATIONS
--- Show how audio characteristics relate to track popularity
+-- How audio characteristics relate to popularity
 SELECT 
     'AUDIO FEATURES vs POPULARITY' AS analysis_section,
     correlation_type,
@@ -316,8 +314,8 @@ ORDER BY ABS(correlation_coefficient) DESC;
 
 /*
 Observations
-Loudness has the strongest positive link to YouTube views (0.12 correlation), suggesting louder tracks perform better visually. 
-Danceability also weakly boosts popularity on both platforms, while acoustic tracks trend slightly negative on YouTube (-0.07).
+Loudness has the strongest link to YouTube views, and it's still weak (0.12). Louder tracks do slightly better visually. Danceability gives a small boost onboth platforms. Acoustic tracks trend slightly negative on YouTube (-0.07).
+None of these are strong predictors on their own.
 */
 
 -- 4.2 INTER-FEATURE CORRELATIONS
@@ -343,14 +341,14 @@ ORDER BY ABS(correlation_value) DESC;
 
 /*
 Observations
-Energy and loudness are strongly correlated (0.75), meaning louder tracks tend to be more energetic.
-Acousticness negatively correlates with loudness (-0.58) and energy (-0.69), confirming acoustic tracks are quieter and calmer.
+Energy and loudness are strongly correlated (0.75). Louder tracks tend to be more energetic. Acousticness negatively correlates with both loudness (-0.58)
+and energy (-0.69), so acoustic tracks are quieter and calmer, as expected.
 */
 
 -- 5: MUSIC CHARACTERISATION ANALYSIS
 
 -- 5.1 GENRE CLASSIFICATION BASED ON AUDIO FEATURES
--- Create music categories based on audio characteristics
+-- Grouping tracks into styles since the dataset has no genre column
 SELECT 
     'MUSIC STYLE CLASSIFICATION' AS analysis_section,
     music_style,
@@ -381,9 +379,8 @@ ORDER BY track_count DESC;
 
 /*
 Observation
-High Energy Dance tracks lead in popularity (avg 138M YouTube views, 149M Spotify streams).
-Sad/Melancholic songs perform surprisingly well on Spotify (avg 156M streams).
-Acoustic/Instrumental styles have niche appeal, with lower overall numbers.
+High Energy Dance leads in popularity (avg 138M YouTube views, 149M Spotify streams). Sad/Melancholic does surprisingly well on Spotify with an (avg 156M streams). Acoustic and Instrumental stay niche with lower numbers
+across the board.
 */
 
 -- 6: TRACK PERFORMANCE ANALYSIS
@@ -403,7 +400,7 @@ ORDER BY stream DESC;
 
 /*
 Observations
-We have [Blinding Lights, Shape of You, Someone You Loved, rockstar (feat. 21 Savage) and Sunflower - Spider-Man: Into the Spider-Verse] 
+We have 5 tracks, [Blinding Lights, Shape of You, Someone You Loved, rockstar (feat. 21 Savage) and Sunflower - Spider-Man: Into the Spider-Verse] 
 tracks with 2.5+B streams on spotify and 580+M on Youtube views.
 */
 
