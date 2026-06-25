@@ -400,8 +400,7 @@ ORDER BY stream DESC;
 
 /*
 Observations
-We have 5 tracks, [Blinding Lights, Shape of You, Someone You Loved, rockstar (feat. 21 Savage) and Sunflower - Spider-Man: Into the Spider-Verse] 
-tracks with 2.5+B streams on spotify and 580+M on Youtube views.
+We have 5 tracks, [Blinding Lights, Shape of You, Someone You Loved, rockstar (feat. 21 Savage) and Sunflower - Spider-Man: Into the Spider-Verse] tracks with 2.5+B streams on spotify and 580+M on Youtube views.
 */
 
 -- 6.2 SPOTIFY DOMINANT TRACKS
@@ -421,8 +420,8 @@ LIMIT 20;
 
 /*
 Observations
-Spotify dominates for replayable hits like Blinding Lights by (The Weeknd) that has 2.7+B more streams than YouTube views. 
-Some tracks like Love Yourself by (Bieber) are 100% Spotify focused while remixes (Roses) thrive there too. YouTube wins for visuals, Spotify for playlists.
+Spotify wins on replayable hits. Blinding Lights (The Weeknd) has 2.7B+ more streams than YouTube views. Love Yourself (Bieber) is almost entirely Spotify-driven and remixes like Roses follow the same pattern. YouTube wins
+on visuals, Spotify wins on replay.
 */
 
 -- 6.3 TRACKS WITH HIGH LIVENESS SCORES
@@ -447,13 +446,13 @@ LIMIT 15;
 
 /*
 Observation
-Live tracks especially Latin performances dominate with near perfect liveness scores (Manu Chao: 1.0). Most combine high energy (avg 0.77) except emotional ballads (Franco De Vita: 0.51 energy).
+Live tracks, especially Latin performances, dominate with near-perfect liveness scores (Manu Chao: 1.0). Most pair that with high energy (avg 0.77), except emotional ballads like Franco De Vita (0.51 energy).
 */
 
 -- 7: ALBUM ANALYSIS
 
 -- 7.1 ARTIST-ALBUM CATALOG
--- Complete catalog of all albums in our dataset
+-- Full catalog of albums in the dataset
 SELECT 
     'ARTIST-ALBUM CATALOG' AS query_type,
     artist,
@@ -469,11 +468,10 @@ LIMIT 20;
 
 /*
 Observation
-Most albums contain just 1-2 tracks which suggests artists frequently release short-form projects or singles rather than traditional full-length albums.
+Most albums here have just 1-2 tracks. Artists are releasing short projects and singles more than traditional full-length albums.
 */
 
 -- 7.2 ALBUM DANCEABILITY ANALYSIS
--- Album danceability analysis
 SELECT 
     'ALBUM DANCEABILITY ANALYSIS' AS query_type,
     artist,
@@ -724,8 +722,8 @@ Streaming numbers (15M+ each) reveal strong demand for sleep/study content
 
 -- SUMMARY
 /*
-Licensed content and official videos drove the strongest results in this dataset. Licensed tracks pulled in 4.2x more YouTube views than non-licensed tracks, and official videos got roughly 5x more 
-engagement than non-official ones. High Energy Dance tracks led every style group, averaging 138M YouTube views and 149M Spotify streams.
+"Licensed content and official videos generated the strongest results in this dataset. Licensed tracks pulled in 4.2x more YouTube views than non-licensed tracks and official videos got roughly 5x more 
+engagement than non-official ones. High Energy Dance tracks leds every style group, averaging 138M YouTube views and 149M Spotify streams.
 
 Artists and producers can use these patterns to:
 - Optimise releases for the platform that fits them (Spotify for replay value, YouTube for virality, see Blinding Lights vs Despacito)
@@ -733,9 +731,9 @@ Artists and producers can use these patterns to:
 - License the content and release an official video, since both moves show a measurable lift (4.2x, 5x)
 - Treat Spotify and YouTube as separate audiences, since the same track can perform very differently across the two
 
-Music will always be a piece of art blended with creativity, but the tracks that performed best here combined strong audio characteristics with the right platform and distribution choices.
+Music will always be a piece of art blended with creativity that always wins our hearts, but the tracks that performed best here combined strong audio characteristics with the right platform and distribution choices.
 
-Side note: TikTok right now is among the platforms driving music virality, dance challenges and trending sounds can push a song's popularity, and that attention often carries over into Spotify 
+Side note: TikTok right now is among the platforms driving music virality, dance challenges and trending sounds can push a song's popularity and that attention often carries over into Spotify 
 streams and YouTube views afterward. Songs like Old Town Road and Heat Waves are well known examples of tracks that gained mainstream traction largely through TikTok before showing up in Spotify and 
 YouTube numbers.
 */
