@@ -2,21 +2,21 @@
 
 -- BUSINESS OBJECTIVE
 /*
+Music plays an important role in our lives, whether you are a kid, a teenager or an adult. People turn to it in moments of joy, sadness, focus and celebration. With the growth of streaming platform 
+like Spotify and Youtube, listening habits have shifted from owning physical albums to having instant access to millions of tracks across different moods and genres. Spotify is one of the 
+leading platforms driving this change, giving listeners personalised playlists, recommendations and endless choice.
 
-Music plays an important role in human life. People turn to it in moments of joy, sadness, focus and celebration. With the growth of streaming platform like Spotify and Youtube, listening habits 
-have shifted from owning physical albums to having instant access to millions of tracks across different moods and genres. Spotify is one of the leading platforms driving this change, giving 
-listeners personalised playlists, recommendations and endless choice.
+The dataset used in this project combines audio data from Spotify with engagement data from YouTube for the same set of tracks. It includes both descriptive attributes like track name, artist
+and album, as well as numerical features like tempo, loudness, energy, danceability, streams and views. Together, these variables provide a structured way to understand what defines modern music 
+and what listeners engage with most.
 
-The dataset used in this project is sourced from Spotify and contains detailed information about a large collection of songs. It includes both descriptive attributes such as track name, artist
-and genre, as well as numerical features like tempo, loudness, energy, danceability and popularity. Together, these variables provide a structured way to understand what defines modern music and 
-what listeners engage with most.
+By analyzing this dataset, the project aims to uncover trends that explain how certain audio features influence a song's popularity. We will look at whether faster tempos or higher energy attract more 
+listeners. We will also consider how patterns in music data can highlight broader shifts in audience preferences over time.
 
-By analyzing this dataset, the project aims to uncover trends that explain how certain audio features influence a song’s popularity. We will look at whether faster tempos, higher energy or specific 
-genres attract more listeners. We will also considers how patterns in music data can highlight broader shifts in audience preferences over time.
-
-The goal is to understand music consumption on a larger scale. We can better appreciate the characteristics that shape successful songs and learn how music continues to adapt to listeners’ tastes 
-in the age of streaming.
+The goal is to understand music consumption on a larger scale. We can better appreciate the characteristics that shape successful songs and learn how music continues to adapt to listeners' 
+tastes in the age of streaming.
 */
+
 -- DATA COLLECTION
 -- The dataset was sourced from Kaggle that has 20,592 tracks by 2,074 artists: Link(https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
 
@@ -453,7 +453,7 @@ Observation
 Live tracks especially Latin performances dominate with near perfect liveness scores (Manu Chao: 1.0). Most combine high energy (avg 0.77) except emotional ballads (Franco De Vita: 0.51 energy).
 */
 
--- STEP 7: ALBUM ANALYSIS
+-- 7: ALBUM ANALYSIS
 
 -- 7.1 ARTIST-ALBUM CATALOG
 -- Complete catalog of all albums in our dataset
@@ -725,15 +725,22 @@ Rain Fruits sounds dominate 'highest energy' tracks with (1.0 score each) but ar
 Streaming numbers (15M+ each) reveal strong demand for sleep/study content
 */
 
---  SUMMARY
-
+-- SUMMARY
 /*
-The music industry is no longer just about talent it's about understanding listener behavior. Artists and producers can use these insights to:
-- Optimise releases (Spotify for streams, YouTube for virality)
-- Focus on high-energy, danceable tracks for broader appeal
-- Invest in licensed, official content for maximum reach
-- Analyse trends to stay ahead in a competitive market
-Music will always be a piece of art that is blend with alot of creativity. Artists can craft songs that not only just sound good but also they perform exceptionally.
+Licensed content and official videos drove the strongest results in this dataset. Licensed tracks pulled in 4.2x more YouTube views than non-licensed tracks, and official videos got roughly 5x more 
+engagement than non-official ones. High Energy Dance tracks led every style group, averaging 138M YouTube views and 149M Spotify streams.
+
+Artists and producers can use these patterns to:
+- Optimise releases for the platform that fits them (Spotify for replay value, YouTube for virality, see Blinding Lights vs Despacito)
+- Lean toward higher-energy, danceable production, since this group consistently outperforms (138M views, 149M streams)
+- License the content and release an official video, since both moves show a measurable lift (4.2x, 5x)
+- Treat Spotify and YouTube as separate audiences, since the same track can perform very differently across the two
+
+Music will always be a piece of art blended with creativity, but the tracks that performed best here combined strong audio characteristics with the right platform and distribution choices.
+
+Side note: TikTok right now is among the platforms driving music virality, dance challenges and trending sounds can push a song's popularity, and that attention often carries over into Spotify 
+streams and YouTube views afterward. Songs like Old Town Road and Heat Waves are well known examples of tracks that gained mainstream traction largely through TikTok before showing up in Spotify and 
+YouTube numbers.
 */
 
 -- END OF ANALYSIS
